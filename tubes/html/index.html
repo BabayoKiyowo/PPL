@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Laman Utama</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <header>
+    <img src="/image/logo.png" alt="Logo" class="logo">
+    <span class="header-title">Laman Utama</span>
+  </header>
+  <main>
+    <h1>Selamat Datang di Coffee Shop</h1>
+    <!-- Konten lainnya -->
+  </main>
+  <!-- Baris 1: Katalog Makanan -->
+  <div class="section">
+    <h2>Coffee</h2>
+    <div class="catalog-container">
+      <!-- Menu Item 1 -->
+      <div class="menu-item" data-name="Americano" data-price="15000">
+        <img src="/image/Americano.png" alt="Americano">
+        <p class="name">Americano</p>
+        <p class="price">Rp 15.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" value="5000" onchange="updateCustomization(this)"> Double Shot (+Rp
+            5.000)</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+
+        </div>
+      </div>
+      <!-- Menu Item 2 -->
+      <div class="menu-item" data-name="Esspresso" data-price="10000">
+        <img src="/image/Espresso.png" alt="Espresso">
+        <p class="name">Esspresso</p>
+        <p class="price">Rp 10.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="7000" onchange="updateCustomization(this)"> Double shot (+Rp
+            5.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 3 -->
+      <div class="menu-item" data-name="V60" data-price="22000">
+        <img src="/image/V60.png" alt="Pasta">
+        <p class="name">V60</p>
+        <p class="price">Rp 22.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 4 -->
+      <div class="menu-item" data-name="Cappuccino" data-price="18000">
+        <img src="/image/Cappuccino.png" alt="Noodles">
+        <p class="name">Cappuccino</p>
+        <p class="price">Rp 18.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 5 -->
+      <div class="menu-item" data-name="Cold Brew" data-price="15000">
+        <img src="/image/Cold Brew.png" alt="Fries">
+        <p class="name">Cold Brew</p>
+        <p class="price">Rp 15.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="0" onchange="updateCustomization(this)"> less Ice </label><br>
+          <label><input type="checkbox" value="0" onchange="updateCustomization(this)"> less Sugar </label><br>
+        </div>
+      </div>
+      <!-- Menu Item 6 -->
+      <div class="menu-item" data-name="Mocha Latte" data-price="28000">
+        <img src="/image/Mocha Latte.png" alt="Chicken">
+        <p class="name">Mocha Latte</p>
+        <p class="price">Rp 28.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Non-Coffee</h2>
+    <div class="catalog-container">
+      <!-- Menu Item 1 -->
+      <div class="menu-item" data-name="Americano" data-price="15000">
+        <img src="/image/Lime Squash.png" alt="Lime Squash">
+        <p class="name">Lime Squash</p>
+        <p class="price">Rp 15.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="5000" onchange="updateCustomization(this)"> double shot (+Rp
+            5.000)</label><br>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 2 -->
+      <div class="menu-item" data-name="Pizza" data-price="30000">
+        <img src="/image/Lychee Fresh Sparkle.png" alt="Pizza">
+        <p class="name">Lychee Fresh Sparkle</p>
+        <p class="price">Rp 30.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="7000" onchange="updateCustomization(this)"> Extra Topping (+Rp
+            7.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 3 -->
+      <div class="menu-item" data-name="Pasta" data-price="22000">
+        <img src="/image/Avocado Yogurt Smoothies.png" alt="Pasta">
+        <p class="name">Avocado Yogurt Smoothies</p>
+        <p class="price">Rp 22.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 4 -->
+      <div class="menu-item" data-name="Noodles" data-price="18000">
+        <img src="/image/Milk Tea.png" alt="Noodles">
+        <p class="name">Milk tea</p>
+        <p class="price">Rp 18.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 5 -->
+      <div class="menu-item" data-name="Fries" data-price="15000">
+        <img src="/image/Matcha float.png" alt="Fries">
+        <p class="name">Matcha Float</p>
+        <p class="price">Rp 15.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 6 -->
+      <div class="menu-item" data-name="Vanilla Tea" data-price="28000">
+        <img src="/image/Vanilla Tea.png" alt="Tea">
+        <p class="name">Vanilla Tea</p>
+        <p class="price">Rp 28.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" id="hot" value="0" onchange="updateCustomization(this)"> Hot</label><br>
+          <label><input type="checkbox" id="lessIce" value="0" onchange="updateCustomization(this)" disabled> Less
+            Ice</label><br>
+          <label><input type="checkbox" id="ice" value="3000" onchange="updateCustomization(this)"> Ice (+Rp
+            3.000)</label><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Food</h2>
+    <div class="catalog-container">
+      <!-- Menu Item 1 -->
+      <div class="menu-item" data-name="Burger" data-price="15000">
+        <img src="/image/Burger.png" alt="Burger">
+        <p class="name">Burger</p>
+        <p class="price">Rp 15.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="3000" onchange="updateCustomization(this)"> +chesee (+Rp
+            3.000)</label><br>
+          <label><input type="checkbox" value="5000" onchange="updateCustomization(this)"> +egg (+Rp 5.000)</label><br>
+          <label><input type="checkbox" value="3000" onchange="updateCustomization(this)"> hot (+Rp 3.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 2 -->
+      <div class="menu-item" data-name="Sausage" data-price="30000">
+        <img src="/image/Sosis.png" alt="Sausage">
+        <p class="name">Sausage</p>
+        <p class="price">Rp 30.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="7000" onchange="updateCustomization(this)"> Extra Topping (+Rp
+            7.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 3 -->
+      <div class="menu-item" data-name="Chicken Nugget" data-price="22000">
+        <img src="/image/Chicken Nugget.png" alt="Chicken Nugget">
+        <p class="name">Chicken Nugget</p>
+        <p class="price">Rp 22.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="5000" onchange="updateCustomization(this)"> Mushroom (+Rp
+            5.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 4 -->
+      <div class="menu-item" data-name="Noodles" data-price="18000">
+        <img src="/image/Noodles.png" alt="Noodles">
+        <p class="name">Noodles</p>
+        <p class="price">Rp 18.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="4000" onchange="updateCustomization(this)"> Egg (+Rp 4.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 5 -->
+      <div class="menu-item" data-name="Fries" data-price="15000">
+        <img src="/image/Fries.png" alt="Fries">
+        <p class="name">Fries</p>
+        <p class="price">Rp 15.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="2000" onchange="updateCustomization(this)"> Cheese (+Rp
+            2.000)</label><br>
+        </div>
+      </div>
+      <!-- Menu Item 6 -->
+      <div class="menu-item" data-name="Chicken" data-price="28000">
+        <img src="/image/Chicken Wings.png" alt="Chicken">
+        <p class="name">Chicken</p>
+        <p class="price">Rp 28.000</p>
+        <div class="button-container">
+          <button class="btn add-btn" onclick="addItem(this)">Add</button>
+          <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
+          <span class="quantity" style="display:none;">0</span>
+          <button class="btn plus-btn" onclick="increment(this)" style="display:none;">+</button>
+        </div>
+        <div class="customization" style="display: none;">
+          <h4>Kustomisasi:</h4>
+          <label><input type="checkbox" value="6000" onchange="updateCustomization(this)"> Spicy (+Rp 6.000)</label><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-up for Add Order Warning -->
+  <div id="addOrderPopup" style="display: none;">
+    <div class="popup-content">
+      <h3>Perhatian</h3>
+      <p>Tambahkan pesanan terlebih dahulu</p>
+      <button class="btn btn-close" onclick="closeAddOrderPopup()">Tutup</button>
+    </div>
+  </div>
+
+
+  <button class="btn" onclick="showOrderSummary()">Pesan</button>
+
+  <!-- Pop-up for Order Summary -->
+  <div id="orderPopup">
+    <div class="popup-content">
+      <h3>Struk Pesanan</h3>
+      <ul id="orderList"></ul>
+      <p><strong>Total Harga: Rp <span id="totalPrice">0</span></strong></p>
+      <button class="btn" onclick="downloadPDF()">Download PDF</button>
+      <button class="btn btn-close" onclick="closePopup()">Tutup</button>
+    </div>
+  </div>
+
+  <script>
+    let orders = [];
+
+    function addItem(button) {
+      const container = button.parentElement;
+      const quantityElement = container.querySelector('.quantity');
+
+      // Show the increment and decrement buttons
+      container.querySelector('.add-btn').style.display = 'none';
+      container.querySelector('.minus-btn').style.display = 'inline-block';
+      container.querySelector('.quantity').style.display = 'inline-block';
+      container.querySelector('.plus-btn').style.display = 'inline-block';
+
+      // Set initial quantity to 1
+      if (quantityElement.textContent === '0') {
+        quantityElement.textContent = '1';
+      }
+
+      // Show customization options
+      const customization = container.parentElement.querySelector('.customization');
+      if (customization) {
+        customization.style.display = 'block';
+      }
+
+      updateOrderSummary();
+    }
+
+
+    function increment(button) {
+      const container = button.parentElement;
+      const quantity = container.querySelector('.quantity');
+      quantity.textContent = parseInt(quantity.textContent) + 1;
+
+      updateOrderSummary();
+    }
+
+    function decrement(button) {
+      const container = button.parentElement;
+      const quantity = container.querySelector('.quantity');
+      const currentValue = parseInt(quantity.textContent);
+
+      if (currentValue > 1) {
+        quantity.textContent = currentValue - 1;
+      } else {
+        // Reset to 0 and hide quantity controls
+        quantity.textContent = '0';
+        container.querySelector('.add-btn').style.display = 'inline-block';
+        container.querySelector('.minus-btn').style.display = 'none';
+        container.querySelector('.quantity').style.display = 'none';
+        container.querySelector('.plus-btn').style.display = 'none';
+
+        // Hide customization options
+        const customization = container.parentElement.querySelector('.customization');
+        if (customization) {
+          customization.style.display = 'none';
+        }
+      }
+
+      updateOrderSummary();
+    }
+
+    function updateCustomization(checkbox) {
+      const container = checkbox.closest('.menu-item');
+
+      const iceCheckbox = container.querySelector('#ice'); // Ice
+      const hotCheckbox = container.querySelector('#hot'); // Hot
+      const lessIceCheckbox = container.querySelector('#lessIce'); // Less Ice
+
+      // Jika "Hot" dipilih, nonaktifkan "Ice" dan "Less Ice"
+      if (hotCheckbox.checked) {
+        iceCheckbox.disabled = true;
+        lessIceCheckbox.disabled = true;  // Disable Less Ice
+        iceCheckbox.checked = false;  // Uncheck Ice if Hot is selected
+        lessIceCheckbox.checked = false;  // Uncheck Less Ice if Hot is selected
+      } else {
+        iceCheckbox.disabled = false;  // Enable Ice when Hot is not selected
+      }
+
+      // Jika "Ice" dipilih, aktifkan "Less Ice"
+      if (iceCheckbox.checked) {
+        lessIceCheckbox.disabled = false;  // Enable Less Ice if Ice is selected
+      } else {
+        lessIceCheckbox.disabled = true;  // Disable Less Ice if Ice is not selected
+        lessIceCheckbox.checked = false;  // Uncheck Less Ice if Ice is not selected
+      }
+
+      // Menghitung harga setelah kustomisasi
+      const basePrice = parseInt(container.getAttribute('data-price'), 10);
+      let totalPrice = basePrice;
+
+      // Menghitung harga berdasarkan kustomisasi yang dipilih
+      const checkboxes = container.querySelectorAll('input[type="checkbox"]:checked');
+      checkboxes.forEach(cb => {
+        totalPrice += parseInt(cb.value, 10);
+      });
+
+      // Update harga pada menu
+      container.querySelector('.price').textContent = `Rp ${totalPrice.toLocaleString()}`;
+
+      // Update ringkasan pesanan
+      updateOrderSummary();
+    }
+
+
+
+
+    function updateOrderSummary() {
+      const items = document.querySelectorAll('.menu-item');
+      const orderList = document.getElementById('orderList');
+      const totalPriceEl = document.getElementById('totalPrice');
+      let total = 0;
+
+      // Clear the order summary list
+      orderList.innerHTML = '';
+
+      items.forEach(item => {
+        const quantity = parseInt(item.querySelector('.quantity').textContent || '0');
+        if (quantity > 0) {
+          const name = item.getAttribute('data-name');
+          let basePrice = parseInt(item.getAttribute('data-price'), 10);
+
+          // Calculate total customizations
+          const customizations = item.querySelectorAll('.customization input[type="checkbox"]:checked');
+          let customizationPrice = 0;
+          customizations.forEach(cust => {
+            customizationPrice += parseInt(cust.value, 10);
+          });
+
+          // Final price per item (with customizations)
+          const itemPrice = (basePrice + customizationPrice) * quantity;
+          total += itemPrice;
+
+          // Add item to order summary
+          const li = document.createElement('li');
+          li.textContent = `${name} x${quantity} - Rp ${itemPrice.toLocaleString()}`;
+
+          // Append customizations if any
+          if (customizations.length > 0) {
+            const ul = document.createElement('ul');
+            customizations.forEach(cust => {
+              const custLi = document.createElement('li');
+              custLi.textContent = cust.parentElement.textContent.trim();
+              ul.appendChild(custLi);
+            });
+            li.appendChild(ul);
+          }
+
+          orderList.appendChild(li);
+        }
+      });
+
+      // Update total price
+      totalPriceEl.textContent = total.toLocaleString();
+    }
+
+    function showOrderSummary() {
+      const items = document.querySelectorAll('.menu-item');
+      let itemAdded = false;
+
+      // Check if at least one item has been added (quantity > 0)
+      items.forEach(item => {
+        const quantity = parseInt(item.querySelector('.quantity').textContent || '0');
+        if (quantity > 0) {
+          itemAdded = true;
+        }
+      });
+
+      if (!itemAdded) {
+        // If no items were added (i.e., all quantities are 0), show the warning popup
+        document.getElementById('addOrderPopup').style.display = 'flex';
+        return; // Exit the function if no items have been added
+      }
+
+      // Proceed with showing the order summary if items are added
+      const summary = document.getElementById('orderPopup');
+      summary.style.display = 'flex'; // Show the order summary pop-up
+    }
+
+
+
+    function closeAddOrderPopup() {
+      document.getElementById('addOrderPopup').style.display = 'none';
+    }
+
+
+
+    function closePopup() {
+      document.getElementById('orderPopup').style.display = 'none';
+    }
+
+    function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const orderList = document.getElementById('orderList').innerText;
+      const totalPrice = document.getElementById('totalPrice').textContent;
+
+      doc.text("Struk Pesanan", 20, 20);
+      doc.text(orderList, 20, 30);
+      doc.text(`Total Harga: Rp ${totalPrice}`, 20, 40);
+
+      doc.save('struk_pesanan.pdf');
+    }
+
+  </script>
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Coffee Shop. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
