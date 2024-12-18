@@ -20,6 +20,14 @@
     <h1>Selamat Datang di Coffee Shop</h1>
     <!-- Konten lainnya -->
   </main>
+  <div class="search-bar">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Cari " 
+      onkeyup="handleSearch(event)">
+    <button id="searchButton" onclick="filterMenuByNameOrAlphabet()">Cari</button>
+  </div>
   <!-- Baris 1: Katalog Makanan -->
   <div class="section">
     <h2>Coffee</h2>
@@ -28,7 +36,7 @@
       <div class="menu-item" data-name="Americano" data-price="15000">
         <img src="/image/Americano.png" alt="Americano">
         <p class="name">Americano</p>
-        <p class="price">Rp 15.000</p>
+        <p class="price">Rp 15.000</p>>
         <div class="button-container">
           <button class="btn add-btn" onclick="addItem(this)">Add</button>
           <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
@@ -189,7 +197,7 @@
       </div>
       <!-- Menu Item 3 -->
       <div class="menu-item" data-name="Avocado Yogurt Smoothies" data-price="30000">
-        <img src="/image/Avocado Yogurt Smoothies.png" alt="Avocado Yogurt Smoothies">
+        <img src="/image/Milk Tea.png" alt="Avocado Yogurt Smoothies">
         <p class="name">Avocado Yogurt Smoothies</p>
         <p class="price">Rp 30.000</p>
         <div class="button-container">
@@ -207,9 +215,9 @@
         </div>
       </div>
       <!-- Menu Item 4 -->
-      <div class="menu-item" data-name="Noodles" data-price="18000">
-        <img src="/image/Milk Tea.png" alt="Noodles">
-        <p class="name">Milk tea</p>
+      <div class="menu-item" data-name="Milk Tea" data-price="18000">
+        <img src="../image/Milk Tea.png" alt="Milk Tea">
+        <p class="name">Milk Tea</p>
         <p class="price">Rp 18.000</p>
         <div class="button-container">
           <button class="btn add-btn" onclick="addItem(this)">Add</button>
@@ -299,7 +307,7 @@
         <p class="name">Sausage</p>
         <p class="price">Rp 30.000</p>
 
-        
+
         <div class="button-container">
           <button class="btn add-btn" onclick="addItem(this)">Add</button>
           <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
