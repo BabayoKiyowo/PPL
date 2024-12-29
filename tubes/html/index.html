@@ -36,7 +36,7 @@
       <div class="menu-item" data-name="Americano" data-price="15000">
         <img src="/image/Americano.png" alt="Americano">
         <p class="name">Americano</p>
-        <p class="price">Rp 15.000</p>>
+        <p class="price">Rp 15.000</p>
         <div class="button-container">
           <button class="btn add-btn" onclick="addItem(this)">Add</button>
           <button class="btn minus-btn" onclick="decrement(this)" style="display:none;">-</button>
@@ -404,6 +404,8 @@
 
   <button class="btn-order" onclick="showOrderSummary()">Pesan</button>
 
+  
+  <div id="successAlert" class="alert">Pesanan berhasil</div>
 
   <!-- Pop-up for Order Summary -->
   <div id="orderPopup">
@@ -411,7 +413,7 @@
       <h3>Struk Pesanan</h3>
       <ul id="orderList"></ul>
       <p><strong>Total Harga: Rp <span id="totalPrice">0</span></strong></p>
-      <button class="btn" onclick="downloadPDF()">Download PDF</button>
+      <button class="btn" onclick="downloadPDF()">Cetak Struk</button>
       <button class="btn btn-close" onclick="closePopup()">Tutup</button>
     </div>
   </div>

@@ -221,41 +221,81 @@ function updateCustomization(checkbox) {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
     
-      const orderList = document.getElementById('orderList').innerText;
-      const totalPrice = document.getElementById('totalPrice').textContent;
+      const orderList = document.getElementById('orderList')?.innerText || "Pesanan kosong.";
+      const totalPrice = document.getElementById('totalPrice')?.textContent || "0";
     
       // Membuat PDF
       doc.text("Struk Pesanan", 20, 20);
       doc.text(orderList, 20, 30);
-      doc.text('Total Harga: Rp ${totalPrice}', 20, 50);
+      doc.text(`Total Harga: Rp ${totalPrice}`, 20, 50);
     
       // Mengunduh PDF
       doc.save('struk_pesanan.pdf');
-      showAlert("Pesanan berhasil");
+      showAlert("Pesanan berhasil disimpan.");
     
-      // Memanggil fungsi reset pesanan yang sudah ada
-      closePopup(); // Atau nama fungsi reset pesanan Anda
+      // Memanggil fungsi reset pesanan
+      resetOrderDetails(); // Reset semua detail order dan tampilan
+    }
+    
+    function resetOrderDetails() {
+      // Reset elemen pesanan
+      const orderList = document.getElementById('orderList');
+      const totalPrice = document.getElementById('totalPrice');
+      const menuItems = document.querySelectorAll('.menu-item');
+    
+      if (orderList) orderList.innerText = "";
+      if (totalPrice) totalPrice.textContent = "0";
+    
+      // Reset tampilan setiap item menu
+      menuItems.forEach(item => {
+        const quantityElement = item.querySelector('.quantity');
+        if (quantityElement) quantityElement.textContent = "0";
+    
+        // Menyembunyikan elemen kontrol jumlah
+        const addBtn = item.querySelector('.add-btn');
+        const minusBtn = item.querySelector('.minus-btn');
+        const plusBtn = item.querySelector('.plus-btn');
+        const customization = item.querySelector('.customization');
+    
+        if (addBtn) addBtn.style.display = 'inline-block';
+        if (minusBtn) minusBtn.style.display = 'none';
+        if (plusBtn) plusBtn.style.display = 'none';
+        if (customization) customization.style.display = 'none';
+    
+        // Reset checkbox kustomisasi
+        const checkboxes = item.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+          cb.checked = false;
+          cb.disabled = false;
+        });
+    
+        // Reset harga ke harga dasar
+        const basePrice = parseInt(item.getAttribute('data-price'), 10);
+        const priceElement = item.querySelector('.price');
+        if (priceElement) {
+          priceElement.textContent = `Rp ${basePrice.toLocaleString('id-ID')}`;
+        }
+      });
+    
+      // Menutup popup (jika ada)
+      closePopup();
     }
     
     function showAlert(message) {
       const alert = document.getElementById('successAlert');
-      alert.textContent = message;
-      alert.style.display = 'block';
+      if (alert) {
+        alert.textContent = message;
+        alert.style.display = 'block';
     
-      // Menutup alert secara otomatis setelah 3 detik
-      setTimeout(() => {
-        alert.style.display = 'none';
-      }, 3000);
+        // Menutup alert secara otomatis setelah 3 detik
+        setTimeout(() => {
+          alert.style.display = 'none';
+        }, 3000);
     
-      // Menampilkan popup pesanan berhasil
-      showSuccessPopup();
-      resetOrder(); // Pastikan ini adalah fungsi reset pesanan Anda
-    
-    
-      // Memanggil fungsi reset pesanan yang sudah ada
-      closePopup(); // Atau nama fungsi reset pesanan Anda
+        // Menampilkan popup pesanan berhasil
+        showSuccessPopup();
+      }
     }
-    
     
     function showSuccessPopup() {
       const successPopup = document.getElementById('successPopup');
@@ -268,6 +308,15 @@ function updateCustomization(checkbox) {
         }, 3000);
       }
     }
+    
+    function closePopup() {
+      const popup = document.getElementById('orderPopup');
+      if (popup) {
+        popup.style.display = 'none';
+      }
+    }
+    
+    
     
     // Fungsi pencarian utama
 // Fungsi pencarian utama (nama dan alfabet)
