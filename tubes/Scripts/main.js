@@ -221,21 +221,93 @@ function updateCustomization(checkbox) {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
     
-      const orderList = document.getElementById('orderList')?.innerText || "Pesanan kosong.";
-      const totalPrice = document.getElementById('totalPrice')?.textContent || "0";
+      // Nama restoran dan informasi header
+      const restaurantName = "Coffee Shop";
+      const restaurantAddress = "Jl.ketintang No. 123, Kota Surabaya";
+      const restaurantPhone = "Telp: 012-3456-7890";
     
-      // Membuat PDF
-      doc.text("Struk Pesanan", 20, 20);
-      doc.text(orderList, 20, 30);
-      doc.text(`Total Harga: Rp ${totalPrice}`, 20, 50);
+      // Header
+      doc.setFontSize(16);
+      doc.text(restaurantName, 20, 20);
+      doc.setFontSize(12);
+      doc.text(restaurantAddress, 20, 28);
+      doc.text(restaurantPhone, 20, 34);
+    
+      // Garis pemisah
+      doc.line(20, 38, 190, 38);
+    
+      // Detail pesanan
+      doc.setFontSize(14);
+      doc.text("Struk Pesanan", 20, 46);
+    
+      const orderList = document.getElementById("orderList");
+      const items = orderList?.children || [];
+      const totalPrice = document.getElementById("totalPrice")?.textContent || "0";
+    
+      let y = 54; // Posisi awal untuk menuliskan item
+      doc.setFontSize(12);
+    
+      // Kolom header untuk tabel pesanan
+      doc.text("Nama Item", 20, y);
+      doc.text("Qty", 100, y);
+      doc.text("Harga", 130, y);
+      doc.text("Total", 160, y);
+      y += 6;
+    
+      // Garis pemisah
+      doc.line(20, y - 2, 190, y - 2);
+    
+      // Isi tabel pesanan
+      Array.from(items).forEach(item => {
+        const text = item.textContent.split(" - ")[0];
+        const totalPriceText = item.textContent.split(" - ")[1];
+    
+        // Memisahkan nama, jumlah, dan harga satuan
+        const [name, quantity] = text.split(" x");
+        const quantityValue = parseInt(quantity.trim(), 10);
+        const basePrice = parseInt(totalPriceText.replace("Rp ", "").replace(/\./g, ""), 10) / quantityValue;
+    
+        // Menampilkan data dalam kolom
+        doc.text(name.trim(), 20, y);
+        doc.text(quantity.trim(), 100, y);
+        doc.text(`Rp ${basePrice.toLocaleString("id-ID")}`, 130, y);
+        doc.text(`Rp ${parseInt(totalPriceText.replace("Rp ", "").replace(/\./g, ""), 10).toLocaleString("id-ID")}`, 160, y);
+    
+        y += 6;
+    
+        // Tambahkan kustomisasi jika ada
+        const customizationList = item.querySelectorAll("ul li");
+        customizationList.forEach(cust => {
+          doc.setFontSize(10);
+          doc.text(`  - ${cust.textContent.trim()}`, 20, y);
+          y += 4;
+          doc.setFontSize(12);
+        });
+      });
+    
+      // Garis pemisah sebelum total harga
+      y += 4;
+      doc.line(20, y, 190, y);
+    
+      // Total harga
+      y += 6;
+      doc.setFontSize(14);
+      doc.text(`Total Harga: Rp ${totalPrice}`, 20, y);
+    
+      // Footer
+      y += 20;
+      doc.setFontSize(12);
+      doc.text("Terima kasih atas kunjungan Anda!", 20, y);
+      doc.text("Semoga hari Anda menyenangkan!", 20, y + 6);
     
       // Mengunduh PDF
-      doc.save('struk_pesanan.pdf');
-      showAlert("Pesanan berhasil disimpan.");
+      doc.save("struk_pesanan.pdf");
     
-      // Memanggil fungsi reset pesanan
-      resetOrderDetails(); // Reset semua detail order dan tampilan
+      // Tampilkan pesan sukses dan reset pesanan
+      showAlert("Pesanan berhasil disimpan.");
+      resetOrderDetails();
     }
+    
     
     function resetOrderDetails() {
       // Reset elemen pesanan
