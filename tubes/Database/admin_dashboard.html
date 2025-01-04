@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script defer src="/Scripts/dashboard.js"></script>
+</head>
+<body>
+  <!-- Login Page -->
+  <div id="login-page" class="centered-container">
+    <h1>Admin Login</h1>
+    <form id="login-form" class="form-container">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+      <p id="login-error" class="error-message"></p>
+    </form>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" style="display: none;">
+    <header class="dashboard-header">
+      <h1>Admin Dashboard</h1>
+      <button id="logout-btn" class="btn">Logout</button>
+    </header>
+
+    <main>
+      <section id="catalog-management">
+        <h2>Manage Catalog</h2>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Item Name</th>
+              <th>Base Price</th>
+              <th>Customizations</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="catalog-table">
+            <!-- Rows dynamically populated -->
+          </tbody>
+        </table>
+        <button id="add-item-btn" class="btn">Add New Item</button>
+
+        <!-- Add/Edit Form -->
+        <div id="item-form-modal" class="modal" style="display: none;">
+          <form id="item-form" class="form-container">
+            <h3 id="form-title">Add Item</h3>
+            <label for="item-name">Name:</label>
+            <input type="text" id="item-name" required>
+
+            <label for="item-price">Base Price:</label>
+            <input type="number" id="item-price" required>
+
+            <label for="item-customizations">Customizations:</label>
+            <textarea id="item-customizations"></textarea>
+
+            <button type="submit" class="btn">Save</button>
+            <button type="button" id="cancel-btn" class="btn btn-secondary">Cancel</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="sales-report">
+        <h2>Sales Report</h2>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="sales-table">
+            <!-- Rows dynamically populated -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
