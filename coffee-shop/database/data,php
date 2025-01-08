@@ -1,0 +1,24 @@
+<?php
+$db = include 'db_config.php';
+
+function getMenuByCategory($category) {
+    global $db;
+
+    if (!$db) {
+        die("Koneksi database tidak ditemukan.");
+    }
+
+    $query = "SELECT * FROM menu WHERE category = ?";
+    $stmt = $db->prepare($query);
+    $stmt->bind_param("s", $category);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $items = [];
+    while ($row = $result->fetch_assoc()) {
+        $items[] = $row;
+    }
+
+    return $items;
+}
+?>
