@@ -1,0 +1,135 @@
+/* Reset dan gaya dasar */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 220px;
+    background: rgba(0, 0, 0, 0.8);
+    padding-top: 20px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h2 {
+    color: #f1c40f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: #3498db;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* Container utama */
+.container {
+    margin-left: 240px;
+    padding: 20px;
+}
+
+/* Heading utama */
+h1 {
+    font-size: 28px;
+    color: #f1c40f;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulir */
+form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+form h3 {
+    margin: 0 0 15px;
+    font-size: 20px;
+    color: #ecf0f1;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #ecf0f1;
+}
+
+form input, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+form input {
+    background: #fff;
+    color: #000;
+}
+
+form button {
+    background: #e74c3c;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover {
+    background: #c0392b;
+}
+
+/* Tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    color: #fff;
+}
+
+table th {
+    background: #8e44ad;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+table tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+table tr:hover {
+    background: rgba(255, 255, 255, 0.15);
+}

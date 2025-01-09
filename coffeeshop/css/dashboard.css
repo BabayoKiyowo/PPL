@@ -1,0 +1,165 @@
+/* Reset dan gaya dasar */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #8e44ad, #3498db); /* Sesuaikan dengan tema penjualan: ungu dan biru */
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 220px;
+    background-color: rgba(0, 0, 0, 0.8); /* Menggunakan latar belakang gelap untuk kontras */
+    color: #fff;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    color: #f1c40f; /* Warna oranye cerah untuk judul */
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background-color: #3498db; /* Biru terang saat hover */
+    border-radius: 5px;
+    color: #fff;
+}
+
+.sidebar .logout,
+.sidebar .user {
+    background-color: #e74c3c; /* Merah terang untuk logout dan user */
+    text-align: center;
+    font-size: 16px;
+    padding: 12px 0;
+    margin-top: 20px;
+}
+
+.sidebar .logout:hover,
+.sidebar .user:hover {
+    background-color: #c0392b; /* Merah lebih gelap saat hover */
+}
+
+/* Content */
+.content {
+    margin-left: 240px; /* Adjusted for sidebar */
+    padding: 20px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #f1c40f; /* Warna oranye cerah untuk heading */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Export buttons */
+.export-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-export {
+    background-color: #3498db; /* Biru terang untuk tombol export */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 10px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.button-export:hover {
+    background-color: #2980b9; /* Biru lebih gelap saat hover */
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Latar belakang transparan agar lebih sesuai dengan tema */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    color: #fff;
+}
+
+table th {
+    background-color: #8e44ad; /* Ungu untuk header tabel */
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+table tr:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Table action buttons */
+table button {
+    background-color: #e74c3c; /* Merah untuk tombol aksi */
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+table button:hover {
+    background-color: #c0392b; /* Merah lebih gelap saat hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 220px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    table th, table td {
+        font-size: 12px;
+    }
+
+    .button-export {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
